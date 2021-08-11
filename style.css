@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yesteryear&display=swap');
+
+body{
+    margin: 0 auto;
+    padding: 0px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+    
+    
+}
+
+.Hero{
+    background-image: url('./Images/c26e08902d834a208c6030b6.jpg');
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+/**************Header section**********************/
+header{
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    
+}
+
+
+
+
+ nav li a{
+    text-decoration:none;
+    color: white;
+}
+
+ul{
+    list-style: none;
+}
+ 
+header nav ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.mid{
+    display: flex;
+    
+}
+.mid li a{
+    margin-right:5em ;
+}
+
+.mid ul li a,.logodiv li a {
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.mid ul li a{
+    position: relative;
+}
+.mid ul li a::after{
+    content: '';
+    bottom: -5px;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background-color: yellow;
+    position: absolute;
+    transition: 0.5s;
+}
+
+.mid ul li a:hover::after{
+    width: 100%;
+}
+
+.mid ul li a:hover{
+    color: yellow;
+}
+
+
+
+.logodiv li a:hover{
+    color: crimson;
+} 
+
+.logo a {
+    font-size: large;
+    
+
+}
+
+#menu1:hover{
+    cursor: pointer;
+}
+
+.droppingMenu nav{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('./Images/c26e08902d834a208c6030b6.jpg');
+    background-size: cover;
+    transition: 1.5s ;
+}
+
+.droppingMenu nav{
+    padding-top: 50px;
+    
+}
+.droppingMenu nav ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.droppingMenu nav ul li {
+    padding: 25px;
+
+}
+
+.droppingMenu nav ul li a {
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+
+  
+}
+
+
+.droppingMenu nav ul li a:hover{
+    color: yellow;
+}
+
+
+.dropIcon img{
+    top:2em;
+    right:2em;
+    position: absolute;
+    cursor: pointer;
+    
+    
+}
+
+/************************************************************************/
+
+#astro img{
+    width: 200px;
+    height: 200px;
+    margin-top: 40vh;
+    padding: 5px;
+    transition: width 2s, height 2s, transform 2s;
+}
+
+
+
+#astro img{
+    /*transition: width 2s, height 2s, transform 2s;*/
+    cursor: pointer;
+    animation: swing 5s infinite ease-in-out;
+}
+
+
+
+#planet img{
+    width: 100px;
+    height: 100px;
+    margin-top: 20vh;
+    transform: translateX(-5vw);
+    
+    
+}
+
+#planet2 img{
+    width: 80px;
+    height: 80px;
+    margin-top: 5vh;
+    transform: translateX(-50vw);
+    transform: translateY(30vh);
+}
+
+
+
+@keyframes swing {
+    0%, 100% { transform: rotate(-10deg); }
+    20% {transform:scale(.95);}
+    50% { transform: rotate(10deg); }
+    80% {transform:scale(.95);}
+  }
+
+#welcome {
+    
+    margin-top: 30vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#welcome input{
+    background-color: transparent;
+    border: 3px solid  white;
+    border-radius: 50px;
+    color: white;
+    background-color: transparent;
+    padding: 10px 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: 0.5s ease-in-out;
+    
+}
+
+#welcome input:hover{
+   background-color: rgb(190, 6, 6);
+   
+  
+}
+
+
+/*********************************************************/
+
+/*******media query***************/
+
+@media (max-width:700px){
+
+/****nav mobile*************************************/
+.Hero{
+    height: 100vh;
+}
+.item{
+    display: none;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu1 img{
+    margin-right: 2em;
+}
+
+/******************images of hero**********************/
+#astro img{
+    width: 100px;
+    height: 100px;
+    margin-left: 2em;
+}
+
+#planet img{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin-top: 25vh;
+    margin-left: 0.8em;
+}
+
+#planet2 img{
+    width: 40px;
+    height: 40px;
+    margin-top: 30vh;
+    margin-left: -25vw;
+    position: absolute;
+    
+}
+
+#welcome {
+    
+    margin-top: 20vh;
+}
+
+
+#welcome h1{
+    font-size: 1.5rem;
+}
+
+#welcome p{
+    font-size: 0.8rem;
+}
+
+#welcome input{
+    padding: 8px 30px;
+}
+/*********************************************/
+
+/**************************************************/
+}
+
+@media (max-width:364px){
+    #planet img{
+       margin-top: 25vh;
+       margin-left: 0.1em;
+       
+        
+    }
+
+
+}

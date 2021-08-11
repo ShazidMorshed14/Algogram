@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!------------------>
+
+    <link rel="stylesheet" href="SortingAlgorithms.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato|Roboto:400,900' rel='stylesheet' type='text/css'>
+    <title>Algorithms</title>
+
+    <!-- Sorting part js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        function addFields() {
+            //debugger;
+
+            var number = document.getElementsByName("nooftickets")[0].value;
+
+
+            var container = document.getElementById("container");
+            container.innerHTML = '';
+            container.appendChild(document.createTextNode("Enter the elements"));
+            container.appendChild(document.createElement("br"));
+            for (i = 0; i < number; i++) {
+                container.appendChild(document.createTextNode("" + (i + 1)));
+                var input = document.createElement("input");
+
+                input.type = "text";
+                input.name = "name" + i;
+                input.setAttribute('class', 'newInputs');
+                //input.required= true;
+                container.appendChild(input);
+                container.appendChild(document.createElement("br"));
+
+
+            }
+            var ButtonAfter = document.createElement("input");
+            ButtonAfter.type = "button";
+            ButtonAfter.value = "Sort";
+            ButtonAfter.setAttribute('id', 'sortBtn');
+
+            container.appendChild(ButtonAfter);
+            ButtonAfter.addEventListener("click", ArrayOutput);
+
+        }
+
+        function ArrayOutput() {
+            //debugger;
+            Swal.fire(
+                'Good job!',
+                'Choose Your Algorithm',
+                'success'
+            )
+            var container1 = document.getElementById("container1");
+
+            var elem = document.getElementsByClassName("newInputs");
+            var names = [];
+            for (var i = 0; i < elem.length; ++i) {
+                if (typeof elem[i].value !== "undefined") {
+                    names.push(elem[i].value);
+                }
+            }
+
+            var webcamval = names;
+            //console.log(webcamval);
+            var result = document.createElement("h5");
+            result.innerHTML = "Numbers are: " + webcamval;
+            //container.appendChild(document.createTextNode(webcamval));
+            container1.appendChild(result);
+            console.log(webcamval);
+            container1.style.border = "1px solid white";
+            container1.style.padding = "1em";
+            container1.style.color = "yellow";
+            container1.style.margin = "1em 0em";
+
+
+            var container2 = document.getElementById("container2");
+
+            var quicksortbtn = document.createElement("input");
+            quicksortbtn.type = "button";
+            quicksortbtn.value = "Quick Sort"
+            var insertionsortbtn = document.createElement("input");
+            insertionsortbtn.type = "button";
+            insertionsortbtn.value = "Insertion Sort"
+            var mergesortbtn = document.createElement("input");
+            mergesortbtn.type = "button";
+            mergesortbtn.value = "Merge Sort"
+            var bubblesortbtn = document.createElement("input");
+            bubblesortbtn.type = "button";
+            bubblesortbtn.value = "Bubble Sort";
+
+            container2.appendChild(quicksortbtn);
+            container2.appendChild(insertionsortbtn);
+            container2.appendChild(mergesortbtn);
+            container2.appendChild(bubblesortbtn);
+            //quicksortbtn.addEventListener("onclick", QuicksortOperation());
+            //quicksortbtn.addEventListener("click", QuicksortOperation(names));
+            insertionsortbtn.onclick = function () {
+                alert('Under Construction !Please Select Quick Sort')
+            }
+            mergesortbtn.onclick = function () {
+                alert('Under Construction !Please Select Quick Sort')
+            }
+            bubblesortbtn.onclick = function () {
+                alert('Under Construction !Please Select Quick Sort')
+            }
+
+            /*******************/
+            quicksortbtn.onclick = function () {
+                quicksortbtn.style.backgroundColor = "rgb(190, 6, 6)";
+                //var items = [5, 3, 7, 6, 2, 9];
+                // var items =names;
+                var farray = names;
+
+                var resultarray = farray.map(function (x) {
+                    return parseInt(x, 10);
+                });
+                var items = resultarray;
+
+                function swap(items, leftIndex, rightIndex) {
+                    var temp = items[leftIndex];
+                    items[leftIndex] = items[rightIndex];
+                    items[rightIndex] = temp;
+                }
+                function partition(items, left, right) {
+                    var pivot = items[Math.floor((right + left) / 2)]; //middle element
+
+                    /***********website code*******************************/
+
+                    alert("Pivot  " + pivot);
+
+
+                    var mypivot = pivot;
+                    var pivotcontainer = document.getElementById("pivot");
+                    pivotcontainer.appendChild(document.createTextNode("Pivot"));
+                    var pivotheading = document.createElement("h5");
+                    pivotheading.innerHTML = mypivot;
+                    pivotcontainer.appendChild(pivotheading);
+                    pivotcontainer.style.border = "1px solid white";
+                    pivotcontainer.style.padding = "1em";
+                    pivotcontainer.style.color = "greenyellow";
+                    pivotcontainer.style.margin = "1em 0em";
+                    /**********************************************/
+                    //alert(items);
+
+                    i = left, //left pointer
+                        j = right; //right pointer
+                    while (i <= j) {
+                        while (items[i] < pivot) {
+                            i++;
+                        }
+                        while (items[j] > pivot) {
+                            j--;
+                        }
+                        if (i <= j) {
+                            swap(items, i, j); //sawpping two elements
+
+                            /************website code***********************/
+                            alert("After Swap " + items);
+
+                            var swapcontainer = document.getElementById("swap");
+                            swapcontainer.appendChild(document.createTextNode("Swap:"));
+                            var steps = document.createElement("p");
+                            steps.innerHTML = items;
+                            steps.setAttribute('class', 'steps');
+                            //input.required= true;
+                            swapcontainer.appendChild(steps);
+                            swapcontainer.appendChild(document.createElement("br"));
+                            swapcontainer.style.border = "1px solid white";
+                            swapcontainer.style.padding = "1em";
+                            swapcontainer.style.color = "yellow";
+                            swapcontainer.style.margin = "1em 0em"
+                            /****************************************************/
+
+                            i++;
+                            j--;
+                        }
+                    }
+                    return i;
+                }
+
+                function quickSort(items, left, right) {
+                    var index;
+                    if (items.length > 1) {
+                        index = partition(items, left, right); //index returned from partition
+                        //alert(items[index]);
+                        if (left < index - 1) { //more elements on the left side of the pivot
+                            quickSort(items, left, index - 1);
+                        }
+                        if (index < right) { //more elements on the right side of the pivot
+                            quickSort(items, index, right);
+                        }
+                    }
+                    return items;
+                }
+                // first call to quick sort
+                var sortedArray = quickSort(items, 0, items.length - 1);
+                //console.log(sortedArray); //prints [2,3,5,6,7,9]
+                alert("Final Sort " + sortedArray);
+
+
+                var anscontainer = document.getElementById("anscontainer");
+                var resultH = document.createElement("h5");
+                resultH.innerHTML = "" + sortedArray;
+                var resultheading = document.createElement("h4");
+                resultheading.innerHTML = "The sorted values are";
+                var closeBtn = document.createElement("input");
+                closeBtn.type = "button";
+                closeBtn.value = "Try New!";
+                closeBtn.setAttribute('id', 'closeBtn');
+                anscontainer.appendChild(resultheading);
+                anscontainer.appendChild(resultH);
+                anscontainer.appendChild(closeBtn);
+                anscontainer.style.border = "1px solid white";
+                anscontainer.style.padding = "1em";
+                anscontainer.style.color = "yellow";
+                closeBtn.addEventListener("click", RefreshPage);
+            };
+
+        }
+
+
+        function RefreshPage() {
+            window.location.reload();
+        }
+
+
+
+    </script>
+
+
+
+
+
+</head>
+
+<body>
+    <section class="Hero">
+        <header>
+            <nav>
+                <ul>
+                    <div class="logodiv">
+                        <li class="logo"><a href="index.html">Algogram</a></li>
+                    </div>
+                    <div class="mid">
+                        <ul>
+                            <li class="item"><a href="index.html">Home</a></li>
+                            <li class="item"><a href="">Algorithms</a></li>
+                            <li class="item"><a href="">About</a></li>
+                            <li class="item"><a href="">Tutorial</a></li>
+                        </ul>
+                    </div>
+
+                    <li id="menu1"><img src="https://img.icons8.com/officexs/16/000000/menu.png" onclick="openMenu()" />
+                    </li>
+                </ul>
+
+
+            </nav>
+            <div class="droppingMenu">
+                <nav id="menu">
+                    <div class="dropIcon">
+                        <img src="https://img.icons8.com/officexs/16/000000/menu.png" onclick="closeMenu()" />
+                    </div>
+                    <ul>
+
+                        <li class="dropitem"><a href="#id-top" onclick="closeMenu()">Home</a></li>
+                        <li class="dropitem"><a href="#id-top" onclick="closeMenu()">Algorithms</a></li>
+                        <li class="dropitem"><a href="#id-top" onclick="closeMenu()">About</a></li>
+                        <li class="dropitem"><a href="#id-top" onclick="closeMenu()">Tutorial</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+        </header>
+        <div class="row">
+            <div class="container" id="SortingContainerMain">
+                <div class="headingalgo">
+                    <h1>Try Your own Example Here!</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md">
+                        <form>
+
+                            <h5>Enter the number of elements</h5>
+                            <input name="nooftickets" id="number" type="text">
+                            <a href="#" id="names" onclick="addFields();"><input type="button" value="Enter"
+                                    id="EnterButton"></a>
+                            <div id='container'>
+
+                            </div>
+                            <div id="container1">
+
+                            </div>
+
+
+
+
+                        </form>
+                    </div>
+                    <div class="col-md">
+                        <div id="container2">
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div id="swap">
+
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div id="pivot">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="anscontainer">
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </section>
+    <!-------menu java script-->
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+
+
+    <script>
+        var menu = document.getElementById("menu");
+
+        function closeMenu() {
+            menu.style.top = "-100vh";
+        }
+
+        function openMenu() {
+            menu.style.top = "0";
+        }
+
+    </script>
+</body>
+
+</html>

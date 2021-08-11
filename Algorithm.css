@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yesteryear&display=swap');
+
+body{
+    margin: 0 auto;
+    padding: 0px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+    
+    
+}
+
+.Hero{
+    background-image: url('./Images/c26e08902d834a208c6030b6.jpg');
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+/**************Header section**********************/
+header{
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    
+}
+
+
+ nav li a{
+    text-decoration:none;
+    color: white;
+}
+
+ul{
+    list-style: none;
+}
+ 
+header nav ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.mid{
+    display: flex;
+    
+}
+.mid li a{
+    margin-right:5em ;
+}
+
+.mid ul li a,.logodiv li a {
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.mid ul li a{
+    position: relative;
+}
+.mid ul li a::after{
+    content: '';
+    bottom: -5px;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background-color: yellow;
+    position: absolute;
+    transition: 0.5s;
+}
+
+.mid ul li a:hover::after{
+    width: 100%;
+}
+
+.mid ul li a:hover{
+    color: yellow;
+}
+
+
+
+.logodiv li a:hover{
+    color: crimson;
+} 
+
+.logo a {
+    font-size: large;
+    
+
+}
+
+#menu1:hover{
+    cursor: pointer;
+}
+
+.droppingMenu nav{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('./Images/c26e08902d834a208c6030b6.jpg');
+    background-size: cover;
+    transition: 1.5s ;
+}
+
+.droppingMenu nav{
+    padding-top: 50px;
+    
+}
+.droppingMenu nav ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.droppingMenu nav ul li {
+    padding: 25px;
+
+}
+
+.droppingMenu nav ul li a {
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+
+  
+}
+
+
+.droppingMenu nav ul li a:hover{
+    color: yellow;
+}
+
+
+.dropIcon img{
+    top:2em;
+    right:2em;
+    position: absolute;
+    cursor: pointer;
+    
+    
+}
+
+/************btn*********************************/
+.left{
+    margin-top: 30vh;
+    margin-right: 4px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25vh;
+    justify-content: center;
+    
+}
+.right input{
+    background-color: transparent;
+    color: white;
+    border-radius: 50px;
+    margin: 10px;
+    padding: 10px 80px;
+    border: 3px solid white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: 0.5s ease-in-out;
+    text-align: center;
+}
+
+.right input:hover{
+    background-color: rgb(190, 6, 6);
+}
+
+/*********************************************************/
+
+/*******media query***************/
+
+@media (max-width:700px){
+
+/****nav mobile*************************************/
+.Hero{
+    height: 100vh;
+}
+.item{
+    display: none;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu1 img{
+    margin-right: 2em;
+}
+
+/******************btn**********************/
+
+.left{
+    margin-top: 15vh;
+}
+
+.right{
+    margin-top: 1vh;
+}
+
+/*********************************************/
+
+/**************************************************/
+}
+
+@media (max-width:700px){
+    .left h1{
+       font-size: 2rem;
+    }
+    .left p{
+        font-size: 0.9rem;
+    }
+
+    .left{
+        padding: 1em;
+    }
+
+
+
+}
+
+@media (max-width:420px){
+    .right input{
+        padding: 10px 50px;
+        margin: 0.5em 1em;
+    }
+}
